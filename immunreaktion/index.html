@@ -90,13 +90,13 @@
             if(!pausebool)
             {
               unityInstance.SendMessage("GameManager", "Pause") 
-              pause.style.background = "url('contin-button.png') no-repeat center"
+              pause.body.style.background = "url('contin-button.png') no-repeat center"
               pausebool = true             
             }
             else if(pausebool)
             {
               unityInstance.SendMessage("GameManager", "Contin")
-              pause.style.background = "url('pause-button.png') no-repeat center"
+              pause.body.style.background = "url('pause-button.png') no-repeat center"
               pausebool = false   
             }
 
