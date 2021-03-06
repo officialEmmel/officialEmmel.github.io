@@ -69,14 +69,8 @@
           loadingBar.style.display = "none";
           fullscreenButton.style.display = "block"
           fullscreenButton.onclick = () => {
-            unityInstance.SetFullscreen(1);
-          };
-        }).catch((message) => {
-          alert(message);
-        });
-      };
-      var ActivateFullscreen = function()
-        {
+            var ActivateFullscreen = function()
+            {
             if (viewFullScreen.requestFullscreen) /* API spec */
             {  
                 viewFullScreen.requestFullscreen();
@@ -93,9 +87,12 @@
             {  
                 viewFullScreen.msRequestFullscreen();
             }
- 
-            viewFullScreen.removeEventListener('touchend', ActivateFullscreen);
-        }
+            }
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
       document.body.appendChild(script);
     </script>
   </body>
