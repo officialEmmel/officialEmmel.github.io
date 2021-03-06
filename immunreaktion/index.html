@@ -87,18 +87,6 @@
             location.reload();
           }
           pause.onclick = () => {
-            if(!pausebool)
-            {
-              unityInstance.SendMessage("GameManager", "Pause") 
-              pause.body.style.background = "url('contin-button.png') no-repeat center"
-              pausebool = true             
-            }
-            else if(pausebool)
-            {
-              unityInstance.SendMessage("GameManager", "Contin")
-              pause.body.style.background = "url('pause-button.png') no-repeat center"
-              pausebool = false   
-            }
 
           }
         }).catch((message) => {
