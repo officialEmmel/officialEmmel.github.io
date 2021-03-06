@@ -48,6 +48,7 @@
       var restart = document.querySelector("#restart-button");
 
       fullscreenButton.style.display = "none";
+      restart.style.display = "none";
 
       if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
         container.className = "unity-mobile";
@@ -68,8 +69,11 @@
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
+          
           loadingBar.style.display = "none";
           fullscreenButton.style.display = "block";
+          restart.style.display = "block";
+
           fullscreenButton.onclick = () => {
             unityInstance.SetFullscreen(1);
           };
