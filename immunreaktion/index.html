@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="de">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -84,19 +84,19 @@
             unityInstance.SetFullscreen(1);
           };
           restart.onclick = () => {
-            location.reload();
+            unityInstance.SendMessage("GameManager", "MainMenu")
           }
           pause.onclick = () => {
             if(!pausebool)
             {
               unityInstance.SendMessage("GameManager", "Pause") 
-              pause.style.background = "url('contin-button.png') no-repeat center"
+              pause.style.background = "url('TemplateData/contin-button.png') no-repeat center"
               pausebool = true             
             }
             else if(pausebool)
             {
               unityInstance.SendMessage("GameManager", "Contin")
-              pause.style.background = "url('pause-button.png') no-repeat center"
+              pause.style.background = "url('TemplateData/pause-button.png') no-repeat center"
               pausebool = false   
             }
 
