@@ -49,7 +49,7 @@
       var restart = document.querySelector("#restart-button");
       var pause = document.querySelector("#pause-button");
 
-      var pause = false;
+      var pausebool = false;
 
       fullscreenButton.style.display = "none";
       restart.style.display = "none";
@@ -87,17 +87,17 @@
             location.reload();
           }
           pause.onclick = () => {
-            if(!pause)
+            if(!pausebool)
             {
               unityInstance.SendMessage("GameManager", "Pause") 
               pause.style.background = "url('contin-button.png') no-repeat center"
-              pause = true             
+              pausebool = true             
             }
-            else if(pause)
+            else if(pausebool)
             {
               unityInstance.SendMessage("GameManager", "Contin")
               pause.style.background = "url('pause-button.png') no-repeat center"
-              pause = false   
+              pausebool = false   
             }
 
           }
