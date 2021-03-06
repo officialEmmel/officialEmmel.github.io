@@ -67,27 +67,9 @@
           progressBarFull.style.width = 100 * progress + "%";
         }).then((unityInstance) => {
           loadingBar.style.display = "none";
-          fullscreenButton.style.display = "block"
+          fullscreenButton.style.display = "block";
           fullscreenButton.onclick = () => {
-            var ActivateFullscreen = function()
-            {
-            if (viewFullScreen.requestFullscreen) /* API spec */
-            {  
-                viewFullScreen.requestFullscreen();
-            }
-            else if (viewFullScreen.mozRequestFullScreen) /* Firefox */
-            {
-                viewFullScreen.mozRequestFullScreen();
-            }
-            else if (viewFullScreen.webkitRequestFullscreen) /* Chrome, Safari and Opera */
-            {  
-                viewFullScreen.webkitRequestFullscreen();
-            }
-            else if (viewFullScreen.msRequestFullscreen) /* IE/Edge */
-            {  
-                viewFullScreen.msRequestFullscreen();
-            }
-            }
+            unityInstance.SetFullscreen(1);
           };
         }).catch((message) => {
           alert(message);
