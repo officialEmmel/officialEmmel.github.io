@@ -84,7 +84,7 @@
             unityInstance.SetFullscreen(1);
           };
           restart.onclick = () => {
-            unityInstance.SendMessage("GameManager", "MainMenu")
+            location.reload();
           }
           pause.onclick = () => {
             if(!pausebool)
