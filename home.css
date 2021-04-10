@@ -1,0 +1,17 @@
+.header {
+    text-align: center;
+    padding: 10px;
+}
+
+body {
+    background-color: #002d5b;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+    color: white;
+}
+
+.logo {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+}
