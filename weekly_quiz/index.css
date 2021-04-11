@@ -1,3 +1,4 @@
+
 #quiz ul {
 	list-style: none;
 	margin: 10;
@@ -18,8 +19,9 @@
 	background-color: #fffbf0;
 	border: 0px solid #00bef2;
     padding: 10px;
-    width: 200px;
-
+    font-size: 20px;
+    width: 50%;
+    max-width: 500px;
 }
 
 #quiz label:hover {
@@ -27,10 +29,11 @@
 }
 
 #quiz input:checked ~ label,
-#quiz input:focus ~ label  {
+#quiz label:focus ~ label  {
 	background-color: #dfac20;
 	border-color: #866a00;
 }
+
 
 #quiz input {
 	left: -9999px;
@@ -44,8 +47,17 @@ body {
     color: white;
 }
 
+.disabled {
+    cursor: not-allowed !important;
+}
+
+.disabled:hover {
+    background-color: #ffffff !important;
+}
+
+
 .button {
-    background-color: #00bef2; /* Green */
+    background-color: #00bef2; 
     border: none;
     color: white;
     padding: 15px 32px;
@@ -58,6 +70,6 @@ body {
 
   
 .button:hover {
-    background-color: #4bd8ff; /* Green */
+    background-color: #4bd8ff; 
     color: white;
 }

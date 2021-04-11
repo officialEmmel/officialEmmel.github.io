@@ -6,24 +6,32 @@
 </head>
 <body>
     <form id="quiz" action="">
-        <h2 id="question" >Frage …</h2>
+        <h2 id="question" >?</h2>
         <ul>
           <li>
-            <input type="radio" name="answer" id="a27_0" >
-            <label for="a27_0">Antwort 1</label>
+            <input type="radio" name="answer" id="radio_a">
+            <label id="A" for="radio_a">Antwort 1</label>
           </li>
           <div style="margin-top: 20px;"></div>
           <li>
-            <input type="radio" name="answer" id="a27_1" >
-            <label for="a27_1">Antwort 2</label>
+            <input type="radio" name="answer" id="radio_b" >
+            <label id="B" for="radio_b">Antwort 2</label>
           </li>
           <div style="margin-top: 20px;"></div>
           <li>
-            <input type="radio" name="answer" id="a27_2">
-            <label for="a27_2">Antwort 3</label>
+            <input type="radio" name="answer" id="radio_c">
+            <label id="C" for="radio_c">Antwort 3</label>
           </li>
+          <div style="margin-top: 20px;"></div>
         </ul>
         <div style="margin-top: 20px;"></div>
-        <button type="submit" class="button">confirm choice</button>
+        <button type="button" class="button" id="submit" value="submit">Bestätigen</button>
     </form>
+    <div id="solution">
+        <h2 id="solution_header">Information</h2>
+        <p id="solution_description">Test</p>
+        <button type="button" class="button" id="next">Nächste Frage</button>
+
+    </div>
+    <script src="weekly_quiz.js"></script>
 </body>
