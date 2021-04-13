@@ -9,6 +9,7 @@ let solution_text = document.getElementById("solution_text");
 let solution_description = document.getElementById("solution_description");
 let next_button = document.getElementById("next")
 let question_index = 0;
+let cookies = document.cookie;
 solutionpage.style.display = "none";
 let red = "#bd2020"
 let green = "#20bd4a"
@@ -18,7 +19,7 @@ let quiz =  {
     date: "KW 12",
     index: 26,
     questions: [
-        {    
+        {   
             question: "Wer war der erste Bundeskanzler von Deutschland?",
             choices: ["Konrad Adenauer", "Willy Brandt", "Helmut Schmidt"],
             solution: 0,
@@ -28,6 +29,12 @@ let quiz =  {
             question: "Deutschland?",
             choices: ["Konrad Adenauer", "Willy Brandt", "Helmut Schmidt"],
             solution: 0,
+            description: "Konrad Hermann Joseph Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
+        },
+        {    
+            question: "LOLOLOLOLOLO?",
+            choices: ["Konrad Adenauer", "Willy Brandt", "Helmut Schmidt"],
+            solution: 2,
             description: "Konrad Hermann Joseph Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
         }
     ]
@@ -45,8 +52,8 @@ submit_button.addEventListener("click", () => {
 })
 
 next_button.addEventListener("click", () => {
-    question_index += 1;
-    nextQuestion()
+
+    location.reload()
 })
 
 if(quiz.questions[question_index].choices.length > 2)
@@ -56,7 +63,28 @@ if(quiz.questions[question_index].choices.length > 2)
 
 function nextQuestion()
 {
+    if(getCookie(quiz.index.toString() +  "_question_index") == "")
+    {
+        question_index = 0
+    }
+    else
+    {
+        if(getCookie(quiz.index.toString() + "-"  + getCookie(quiz.index.toString() +  "_question_index").toString() + "_comlpleted") == "")
+        {
+            question_index = parseInt(getCookie(quiz.index.toString() +  "_question_index"), 10)
+        }
+        else
+        {
+            question_index = parseInt(getCookie(quiz.index.toString() +  "_question_index"), 10) + 1
+        }
+    }
+    setCookie(quiz.index.toString() +  "_question_index", parseInt(question_index, 10), 7)
     let choice_index = 0;
+    if(quiz.questions[question_index].question === undefined)
+    {
+        endScreen()
+        return;
+    }
     question.innerHTML = quiz.questions[question_index].question
     choice_elements.forEach(element => {
         element.innerHTML = quiz.questions[question_index].choices[choice_index]
@@ -77,7 +105,12 @@ function submit()
             if(quiz.questions[question_index].choices[choice_index] == quiz.questions[question_index].choices[quiz.questions[question_index].solution])
             {
                 right = true;
-    
+                setCookie(quiz.index.toString() + "-"  + question_index.toString() + "_comlpleted", "true", 7)
+            }
+            else
+            {
+                setCookie(quiz.index.toString() + "-"  + question_index.toString() + "_comlpleted", "false", 7)
+                
             }
             choosen = quiz.questions[question_index].choices[choice_index]
             choosen_radio = element
@@ -115,11 +148,39 @@ function check(correct, choosen, radio)
     });
 }
 
+function endScreen()
+{
+    location.load("localhost:5500/endscreen?quiz=" + quiz.index.toString())
+}
+
 function solutionPage()
 {
     quizpage.style.display = "none"
     solutionpage.style.display = "block";
     solution_description.innerHTML = quiz.questions[question_index].description
 }
+
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
 
 nextQuestion()

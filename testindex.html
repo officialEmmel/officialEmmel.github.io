@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="htmlcss bootstrap menu, navbar, offcanvas, sidebar nav menu CSS examples" />
+<meta name="description" content="Bootstrap 5 navbar make offcanvas on responsive mobile" />  
+
+<title>Demo - Bootstrap 5 navbar offcanvas on mobile. html code example </title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+
+<style type="text/css">
+
+body.offcanvas-active{
+	overflow:hidden;
+}
+
+.offcanvas-header{ display:none; }
+
+.screen-darken{
+	height: 100%;
+	width:0%;
+	z-index: 30;
+	position: fixed;
+	top: 0;
+	right: 0;
+	opacity:0;
+	visibility:hidden;
+	background-color: rgba(34, 34, 34, 0.6);
+	transition:opacity .2s linear, visibility 0.2s, width 2s ease-in;
+}
+
+.screen-darken.active{
+	z-index:10; 
+	transition:opacity .3s ease, width 0s;
+    opacity:1;
+    width:100%;
+    visibility:visible;
+}
+
+/* ============ mobile view ============ */
+@media all and (max-width: 991px) {
+	
+	.offcanvas-header{ display:block; }
+
+	.mobile-offcanvas{
+		visibility: hidden;
+		transform:translateX(-100%);
+	    border-radius:0; 
+		display:block;
+	    position: fixed;
+	    top: 0; left:0;
+	    height: 100%;
+	    z-index: 1200;
+	    width:80%;
+	    overflow-y: scroll;
+	    overflow-x: hidden;
+	    transition: visibility .3s ease-in-out, transform .3s ease-in-out;
+	}
+
+	.mobile-offcanvas.show{
+		visibility: visible;
+    	transform: translateX(0);
+	}
+	.mobile-offcanvas .container, .mobile-offcanvas .container-fluid{
+		display: block;
+	}
+
+}	
+/* ============ mobile view .end// ============ */
+</style>
+
+<script type="text/javascript">
+
+	function darken_screen(yesno){
+		if( yesno == true ){
+			document.querySelector('.screen-darken').classList.add('active');
+		}
+		else if(yesno == false){
+			document.querySelector('.screen-darken').classList.remove('active');
+		}
+	}
+	
+	function close_offcanvas(){
+		darken_screen(false);
+		document.querySelector('.mobile-offcanvas.show').classList.remove('show');
+		document.body.classList.remove('offcanvas-active');
+	}
+
+	function show_offcanvas(offcanvas_id){
+		darken_screen(true);
+		document.getElementById(offcanvas_id).classList.add('show');
+		document.body.classList.add('offcanvas-active');
+	}
+
+	document.addEventListener("DOMContentLoaded", function(){
+		document.querySelectorAll('[data-trigger]').forEach(function(everyelement){
+			
+			let offcanvas_id = everyelement.getAttribute('data-trigger');
+			
+			everyelement.addEventListener('click', function (e) {
+				e.preventDefault();
+	        	show_offcanvas(offcanvas_id);
+	  			
+			});
+		});
+
+		document.querySelectorAll('.btn-close').forEach(function(everybutton){
+			
+			everybutton.addEventListener('click', function (e) {
+				e.preventDefault();
+	        	close_offcanvas();
+	  		});
+		});
+
+		document.querySelector('.screen-darken').addEventListener('click', function(event){
+			close_offcanvas();
+		});
+		
+    }); 
+	// DOMContentLoaded  end
+</script>
+
+</head>
+<body>
+
+<span class="screen-darken"></span>
+
+<header class="section-header py-4">
+<div class="container">
+	<h2>Demo page </h2> 
+</div>
+</header> <!-- section-header.// -->
+
+
+
+<div class="container">
+
+<button data-trigger="navbar_main" class="d-lg-none btn btn-warning" type="button">  Show navbar </button>
+<button data-trigger="card_mobile" class="d-lg-none btn btn-warning" type="button">  Show card </button>
+
+
+<!-- ============= COMPONENT ============== -->
+<nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg navbar-dark bg-primary">
+ <div class="container-fluid">
+    <div class="offcanvas-header">  
+		<button class="btn-close float-end"></button>
+	</div>
+    <a class="navbar-brand" href="#">Brand</a>
+
+	<ul class="navbar-nav">
+		<li class="nav-item active"> <a class="nav-link" href="#">Home </a> </li>
+		<li class="nav-item"><a class="nav-link" href="#"> About </a></li>
+		<li class="nav-item"><a class="nav-link" href="#"> Services </a></li>
+		<li class="nav-item dropdown">
+			<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">  More items  </a>
+		    <ul class="dropdown-menu">
+			  <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+			  <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+			  <li><a class="dropdown-item" href="#"> Submenu item 3 </a></li>
+		    </ul>
+		</li>
+	</ul>
+	<ul class="navbar-nav ms-auto">
+		<li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+		<li class="nav-item"><a class="nav-link" href="#"> Menu item </a></li>
+		<li class="nav-item dropdown">
+			<a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown"> Dropdown right </a>
+		    <ul class="dropdown-menu dropdown-menu-end">
+			  <li><a class="dropdown-item" href="#"> Submenu item 1</a></li>
+			  <li><a class="dropdown-item" href="#"> Submenu item 2 </a></li>
+		    </ul>
+		</li>
+	</ul>
+
+ </div> <!-- container-fluid.// -->
+</nav>
+<!-- ============= COMPONENT END// ============== -->
+
+<section class="section-content py-5">
+
+		<h6>Demo for Responsive Navbar with offcanvas view on mobile. <br> Based on Bootstrap 5 CSS framework. 
+			<br> <br> <span class="text-danger">Change browser size to see in action</span> 
+		 </h6>
+        <p>For this demo page you should connect to the internet to receive files from CDN  like Bootstrap5 CSS, Bootstrap5 JS</p>
+       
+       <article class="card mobile-offcanvas bg-light" id="card_mobile">
+			<div class="card-body">
+				<div class="offcanvas-header">  
+					<button class="btn-close float-end"></button>
+				</div>
+				<h5>This card becomes offcanvas on mobile view</h5>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+				proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+			</div>
+		</article>
+		<br>
+		<p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+
+		<a href="https://bootstrap-menu.com/detail-offcanvas-mobile.html" class="btn btn-success"> &laquo Back to tutorial or Download code</a>
+
+</section>
+
+</div><!-- container //  -->
+
+</body>
+</html>
