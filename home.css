@@ -9949,5 +9949,9 @@ h3 {
     display: none;
   }
 }
+.masthead {
+  background: linear-gradient(90deg, #00587A 21px, transparent 1%) center, linear-gradient(#00587A 21px, transparent 1%) center, #00D3FF;
+  background-size: 22px 22px;
+}
 
 /*# sourceMappingURL=home.css.map */

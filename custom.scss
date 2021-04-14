@@ -22,3 +22,22 @@
 @media only screen and (max-width: 992px) {
     #navbar_main { display: none; }
 }
+
+// Colors
+$bg-color: $eq_secondary;
+$dot-color: $eq_primary;
+
+// Dimensions
+$dot-size: 1px;
+$dot-space: 22px;
+
+
+
+.masthead {
+	background:
+		linear-gradient(90deg, $bg-color ($dot-space - $dot-size), transparent 1%) center,
+		linear-gradient($bg-color ($dot-space - $dot-size), transparent 1%) center,
+		$dot-color;
+	background-size: $dot-space $dot-space;
+    
+}
