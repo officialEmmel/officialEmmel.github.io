@@ -8,7 +8,7 @@
     <title>Emmels Quiz</title>
   </head>
 
-  <nav class=" navbar navbar-expand-lg fixed-top navbar-light eq_pri_bg">
+  <nav id="navbar_main" class="navbar navbar-expand-lg fixed-top navbar-light eq_pri_bg">
     <div class="container-fluid">
 
       <a class="navbar-brand" href="#"><img src="logo.svg" class="img-fluid" width="200px"></img></a>
@@ -93,21 +93,29 @@
       (function ($) {
 $(document).ready(function(){
   
+  var is_mobile = false;
+
+  if( $('#navbar_main').css('display')=='none') {
+      is_mobile = true;       
+  }
+  console.log(is_mobile);
 // hide .navbar first
+
 $(".navbar").hide();
 
 // fade in .navbar
 $(function () {
-  $(window).scroll(function () {
+  if(!is_mobile)
+  {
+    $(window).scroll(function () {
           // set distance user needs to scroll before we fadeIn navbar
     if ($(this).scrollTop() > 100) {
       $('.navbar').fadeIn(1000);
     } else {
       $('.navbar').fadeOut();
     }
-  });
-
-
+    });
+  }
 });
 
 });

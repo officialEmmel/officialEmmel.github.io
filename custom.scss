@@ -19,3 +19,6 @@
     background-color: $eq_secondary;
 }
 
+@media only screen and (max-width: 992px) {
+    #navbar_main { display: none; }
+}
