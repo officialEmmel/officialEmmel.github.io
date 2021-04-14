@@ -30,17 +30,16 @@
 
     </div>
   </nav>
-  <header class="masthead ">
-    <header class="masthead">
-      <div class="container h-100">
-        <div class="row h-100 align-items-center">
-          <div class="col-12 text-center">
-            <img src="logo.svg" class="img-fluids" width="350px"></img>
-            <h4 class=" text-center mt-2 font-weight-light eq_pri_col">Web</h4>
-          </div>
+
+  <header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div id="logo" class="col-12 text-center">
+          <img src="logo.svg" class="img-fluids h-100" width="350px"></img>
+          <h4 class=" text-center mt-2 font-weight-light eq_pri_col">Web</h4>
         </div>
       </div>
-    </header>
+    </div>
   </header>
 
   
@@ -108,6 +107,14 @@ $(document).ready(function(){
 // hide .navbar first
 
 $(".navbar").hide();
+
+$("#logo").hide()
+
+
+$(".masthead").hide()
+$(".masthead").fadeIn(1000)
+
+setTimeout(function(){jQuery("#logo").slideDown(1000)}, 1000);
 
 // fade in .navbar
 $(function () {
