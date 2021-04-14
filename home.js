@@ -1,4 +1,6 @@
 let complete_html_list = document.getElementById("all_quizlist")
+let button_class_middle = document.getElementById("button_class_middle")
+let newest_quizlist = document.getElementById("newest_quiz")
 let complete_list = []
 let items = document.querySelectorAll("#aq_title");
 let quizlist = JSON.parse(data);
@@ -9,24 +11,23 @@ console.log(quizlist.emmels_quiz_all)
 for (let i = 0; i < quizlist.emmels_quiz_all.length; i++) {
 
 }
-
+let index = 0;
 quizlist.emmels_quiz_all.forEach(element => {
-    let index = 0;
-    let add = `
-    <div class="col-sm">
-        <div class="ml-3 mr-3">
-            <div class="mt-3 card mx-auto" style="max-width: 35rem;">
-                <div class="card-body">
-                    <h5 class="card-title text-dark" id="aq_title">${quizlist.emmels_quiz_all[index].theme}</h5>
-                    <p class="card-text text-dark" id="aq_description">Emmels Quiz - Nr. ${quizlist.emmels_quiz_all[index].index}</p>
-                    <a href="#" class="btn btn-primary" id="aq_button" >Spielen</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    `
+    let multicollaps = []
     let div1 = document.createElement("div")
-    div1.className = "col-sm"
+    let more_button = document.createElement("button")
+
+    if(index >= 5)
+    {
+        div1.className = "col-sm collapse multi-collapse"
+        div1.id = "multiCollapseExample" + index.toString()
+        multicollaps.push("multiCollapseExample" + index.toString())
+    }
+    else
+    {
+        div1.className = "col-sm"
+    }
+    
     let div2 = document.createElement("div")
     div2.className = "ml-3 mr-3"
     let div3 = document.createElement("div")
@@ -44,7 +45,7 @@ quizlist.emmels_quiz_all.forEach(element => {
     text.id = "aq_description"
     
     let button = document.createElement("a")
-    button.className = "btn btn-primary"
+    button.className = "btn btn-primary mt-3"
     button.id = "aq_button"
     button.innerHTML = "Spielen"
     
@@ -57,7 +58,74 @@ quizlist.emmels_quiz_all.forEach(element => {
     div4.appendChild(header)
     div4.appendChild(text)
     div4.appendChild(button)
+    
     complete_html_list.appendChild(div1)
+
     index = index + 1
+
+    if(index == quizlist.emmels_quiz_all.length)
+    {
+        console.log("ofojuo")
+        more_button.className = "btn eq_pri_bg eq_sec_col mt-3 mx-auto"
+        more_button.type = "button"
+        more_button.dataset.toggle = "collapse"
+        more_button.dataset.target = ".multi-collapse"
+        more_button.setAttribute('aria-expanded', false);
+        more_button.setAttribute('aria-controls', multicollaps.join(" "));
+        more_button.innerHTML = "Mehr Anzeigen"
+        more_button.id = "more_button"
+
+        button_class_middle.appendChild(more_button)
+
+        moreButton(more_button)
+        newestQuiz()
+    }
 });
+
+function newestQuiz()
+{
+    let div1 = document.createElement("div")
+    div1.className = "card-body"
+    
+    let header = document.createElement("h5")
+    header.className = "card-title text-dark"
+    header.id = "aq_title"
+    
+    let text = document.createElement("p")
+    text.className = "card-text text-dark"
+    text.id = "aq_description"
+    
+    let button = document.createElement("a")
+    button.className = "btn btn-primary mt-3"
+    button.id = "aq_button"
+    button.innerHTML = "Spielen"
+    
+  
+    
+    header.innerHTML = quizlist.emmels_quiz_newest.theme
+    text.innerHTML = `Emmels Quiz - Nr. ${quizlist.emmels_quiz_newest.index.toString()}`
+    div1.appendChild(header)
+    div1.appendChild(text)
+    div1.appendChild(button)
+    
+    newest_quizlist.appendChild(div1)
+}
+
+function moreButton(mb){
+    let toogle = false
+    mb.addEventListener("click", () => {
+    if(toogle)
+    {
+        mb.innerHTML = "Mehr Anzeigen"
+        toogle = false
+    }    
+    else
+    {
+        mb.innerHTML = "Weniger Anzeigen"
+        toogle = true
+    }
+
+})
+}
+
 
