@@ -13,11 +13,8 @@
 }
 
 #quiz label {
-	display: inline-block;
-    text-align: center;
     color: black;
 	background-color: #fffbf0;
-	border: 0px solid #00bef2;
     padding: 10px;
     font-size: 20px;
     width: 50%;
@@ -41,12 +38,7 @@
 	position: absolute;
 }
 
-body {
-    background-color: #002d5b;
-    text-align: center;
-    font-family: 'Quicksand', sans-serif;
-    color: white;
-}
+
 
 .disabled {
     cursor: not-allowed !important;
@@ -75,6 +67,3 @@ body {
     color: white;
 }
 
-html, body {
-    overflow: hidden !important;
-}
