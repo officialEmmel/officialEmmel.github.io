@@ -11,6 +11,7 @@ let next_button = document.getElementById("next")
 let question_index = 0;
 let cookies = document.cookie;
 solutionpage.style.display = "none";
+
 let red = "#bd2020"
 let green = "#20bd4a"
 
@@ -49,6 +50,7 @@ submit_button.addEventListener("click", () => {
     {
         solutionPage()
     }
+
 })
 
 next_button.addEventListener("click", () => {
@@ -90,6 +92,11 @@ function nextQuestion()
         element.innerHTML = quiz.questions[question_index].choices[choice_index]
         choice_index += 1
     });
+
+    (function( $ ){
+        $("#quiz").hide()
+        $("#quiz").fadeIn(1000)
+    })( jQuery );
 }
 
 function submit()
@@ -122,14 +129,16 @@ function submit()
 
 function check(correct, choosen, radio)
 {
-    submit_button.innerHTML = "Weiter"
+    submit_button.innerHTML = "<h5>Weiter</h5>"
     submit_button.value = "next"
+
     if(correct)
     {
         choice_elements.forEach(element => {
             if(element.id == radio.id.split("_")[1].toUpperCase())
             {
                 element.style.backgroundColor = green;
+                burst()
             }
         });
     }
@@ -139,6 +148,7 @@ function check(correct, choosen, radio)
             if(element.id == radio.id.split("_")[1].toUpperCase())
             {
                 element.style.backgroundColor = red;
+                wrongAnim()
             }
         });
         
@@ -156,7 +166,7 @@ function endScreen()
 function solutionPage()
 {
     quizpage.style.display = "none"
-    solutionpage.style.display = "block";
+    solutionFadeIn()
     solution_description.innerHTML = quiz.questions[question_index].description
 }
 
@@ -181,6 +191,19 @@ function getCookie(cname) {
       }
     }
     return "";
-  }
+}
+
+function solutionFadeIn(){
+    (function( $ ){
+        $("#solution").hide()
+        $("#solution").fadeIn(1000)
+    })( jQuery );
+}
+
+function wrongAnim() {
+    (function( $ ){
+        $("#quiz").effect("shake")
+    })( jQuery );
+}
 
 nextQuestion()
