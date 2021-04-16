@@ -81,12 +81,13 @@ function nextQuestion()
         }
     }
     setCookie(quiz.index.toString() +  "_question_index", parseInt(question_index, 10), 7)
-    let choice_index = 0;
-    if(quiz.questions[question_index].question === undefined)
+    if(quiz.questions[question_index] == undefined)
     {
         endScreen()
         return;
     }
+
+    let choice_index = 0;
     question.innerHTML = quiz.questions[question_index].question
     choice_elements.forEach(element => {
         element.innerHTML = quiz.questions[question_index].choices[choice_index]
@@ -109,18 +110,18 @@ function submit()
         if(element.checked)
         {
             console.log(element.id + ": " + quiz.questions[question_index].choices[choice_index])
+            choosen = quiz.questions[question_index].choices[choice_index]
+            choosen_radio = element
             if(quiz.questions[question_index].choices[choice_index] == quiz.questions[question_index].choices[quiz.questions[question_index].solution])
             {
                 right = true;
-                setCookie(quiz.index.toString() + "-"  + question_index.toString() + "_comlpleted", "true", 7)
+                setCookie(quiz.index.toString() + "-"  + question_index.toString() + "_comlpleted", btoa("true-" + choosen), 365)
             }
             else
             {
-                setCookie(quiz.index.toString() + "-"  + question_index.toString() + "_comlpleted", "false", 7)
+                setCookie(quiz.index.toString() + "-"  + question_index.toString() + "_comlpleted", btoa("false-" + choosen), 365)
                 
             }
-            choosen = quiz.questions[question_index].choices[choice_index]
-            choosen_radio = element
         }
         choice_index += 1
     });
@@ -160,7 +161,7 @@ function check(correct, choosen, radio)
 
 function endScreen()
 {
-    location.load("localhost:5500/endscreen?quiz=" + quiz.index.toString())
+    window.location.href = "http://localhost:5500/endscreen/?quiz=" + quiz.index.toString()
 }
 
 function solutionPage()
@@ -205,5 +206,7 @@ function wrongAnim() {
         $("#quiz").effect("shake")
     })( jQuery );
 }
+
+
 
 nextQuestion()
