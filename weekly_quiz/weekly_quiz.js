@@ -161,7 +161,7 @@ function check(correct, choosen, radio)
 
 function endScreen()
 {
-    window.location.href = "http://localhost:5500/endscreen/?quiz=" + quiz.index.toString()
+    window.location.href = `http://${window.location.hostname}/endscreen/?quiz=` + quiz.index.toString()
 }
 
 function solutionPage()
