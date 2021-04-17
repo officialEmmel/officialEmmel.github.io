@@ -3,9 +3,10 @@ let button_class_middle = document.getElementById("button_class_middle")
 let newest_quizlist = document.getElementById("newest_quiz")
 let complete_list = []
 let items = document.querySelectorAll("#aq_title");
-let quizlist = JSON.parse(data);
-
+let quizlist = JSON.parse(data)
 console.log(quizlist.emmels_quiz_all)
+
+let host = "localhost:5500"
 
 
 for (let i = 0; i < quizlist.emmels_quiz_all.length; i++) {
@@ -99,6 +100,7 @@ function newestQuiz()
     button.className = "btn btn-primary mt-3"
     button.id = "aq_button"
     button.innerHTML = "Spielen"
+    button.href = "http://" + host + "/quiz_player/weekly_quiz"
     
   
     

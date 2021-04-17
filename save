@@ -87,3 +87,27 @@
     </div>
     <script src="weekly_quiz.js"></script>
 </body>
+
+
+    choice_elements.forEach(element => {
+        element.innerHTML = quiz.questions[question_index].choices[choice_index]
+        choice_index += 1
+    });
+
+
+
+          <li>
+        <input type="radio" name="answer" id="radio_a">
+        <label id="A" for="radio_a">Antwort 1</label>
+      </li>
+      <div style="margin-top: 20px;"></div>
+      <li>
+        <input type="radio" name="answer" id="radio_b" >
+        <label id="B" for="radio_b">Antwort 2</label>
+      </li>
+      <div style="margin-top: 20px;"></div>
+      <li>
+        <input type="radio" name="answer" id="radio_c">
+        <label id="C" for="radio_c">Antwort 3</label>
+      </li>
+      <div style="margin-top: 20px;"></div>

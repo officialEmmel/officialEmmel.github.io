@@ -1,0 +1,26 @@
+{
+    "title": "Das große Emmels Quiz",
+    "date": "",
+    "index": 1,
+    "questions": [
+        {   
+            "question": "Welches ist das zweitgrößte Land der Welt?",
+            "choices": ["China", "Russland", "Dänemark"],
+            "solution": 1,
+            "description": "Kanada ist mit einer Landesfläche von rund 10 Millionen Quadratkilometern der flächenmäßig zweitgrößte Staat der Erde."
+        },
+        {   
+            "question": "Was ist die drittgrößte Stadt Deutschlands?",
+            "choices": ["Hamburg", "Köln", "München"],
+            "solution": 2,
+            "description": "Kanada ist mit einer Landesfläche von rund 10 Millionen Quadratkilometern der flächenmäßig zweitgrößte Staat der Erde."
+        },
+        {   
+            "question": "",
+            "choices": ["Hamburg", "Köln", "München"],
+            "solution": 2,
+            "description": "Kanada ist mit einer Landesfläche von rund 10 Millionen Quadratkilometern der flächenmäßig zweitgrößte Staat der Erde."
+        },
+
+    ]
+  }

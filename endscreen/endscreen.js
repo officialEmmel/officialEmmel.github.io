@@ -1,6 +1,8 @@
 let quizlist = JSON.parse(data);
 let title = document.getElementById("title")
 let table = document.getElementById("answer_table")
+let body = document.getElementById("body_")
+let alert_ = document.getElementById("alert")
 
 let right = 0;
 let fals = 0;
@@ -36,7 +38,8 @@ console.log(getQuiz())
 
 function start()
 {
-  title.innerHTML = quizlist.emmels_quiz_all[getQuiz() - 7].theme
+
+  title.innerHTML = quizlist.emmels_quiz_all[getQuiz() - 1].theme
   for (let index = 0; index < quiz.questions.length; index++) {
     let tmp = atob(getCookie(getQuiz() + "-" + index.toString() + "_comlpleted"))
     let c = tmp.split("-") 
