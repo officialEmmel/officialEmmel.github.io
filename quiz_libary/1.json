@@ -19,8 +19,8 @@
         {   
             "question": "Welches ist die größte Stadt der welt? (Einwohnerzahl)",
             "choices": ["New York", "Tokyo", "Mexiko-City"],
-            "solution": 2,
-            "description": "Mit über 38 Millionen Einwohnern besitzt Tokio damit eine höhere Bevölkerung als das gesamte Land Kanada (36,7 Millionen)."
+            "solution": 1,
+            "description": "Mit über 38 Millionen Einwohnern besitzt <b>Tokyo</b> damit eine höhere Bevölkerung als das gesamte Land Kanada (36,7 Millionen)."
         },
         {   
             "question": "Welcher Planet ist am nächsten zur Sonne?",
@@ -32,7 +32,7 @@
             "question": "Wie lang braucht der Schall um einen Kilometer zurückzulegen?",
             "choices": ["1 Sekunde", "3 Sekunden", "12 Sekunden"],
             "solution": 1,
-            "description": "In Luft legt der Schall in <b>Kdrei Sekunden</b> ungefähr einen Kilometer zurück. Die Schallgeschwindigkeit in Luft beträgt etwa 344 m/s (Meter pro Sekunde)."
+            "description": "In Luft legt der Schall in <b>drei Sekunden</b> ungefähr einen Kilometer zurück. Die Schallgeschwindigkeit in Luft beträgt etwa 344 m/s (Meter pro Sekunde)."
         }
     ]
 }

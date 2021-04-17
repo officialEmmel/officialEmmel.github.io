@@ -13,7 +13,7 @@ let imagecontainer = document.getElementById("img-container")
 let question_index = 0;
 let cookies = document.cookie;
 solutionpage.style.display = "none";
-let host = "localhost:5500"
+let host = "officialemmel.github.io"
 
 let red = "#bd2020"
 let green = "#20bd4a"
