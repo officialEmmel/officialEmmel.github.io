@@ -48,12 +48,29 @@ let quiz =  {
 
 function requestJSON()
 {
-    if(getQuiz() == undefined) return;
+    let b = false
+    if(getQuiz() == "")
+    {
+        error("Es wurde kein Quiz angefordert")
+        return;
+    }
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
+        if(request.status == 404)
+        {
+            if(b) return;
+            error("Das von dir angeforderte Quiz wurde nicht gefunden.")
+            b = true
+            return;
+        }
+
         if (this.readyState == 4 && this.status == 200) {
-            console.log(request.response)
-            if(request.response == null) return;
+            if(request.response == null)
+            {
+                error("Beim Laden des Quiz ist ein Fehler aufgeten. Bitte versuche es später erneut.")
+                return;
+            }
+
             quiz = JSON.parse(request.response);
             nextQuestion()
         }
@@ -81,6 +98,7 @@ next_button.addEventListener("click", () => {
 
 function nextQuestion()
 {
+    submit_button.style.display = "inline-block"
     if(getCookie(quiz.index.toString() +  "_question_index") == "")
     {
         question_index = 0
@@ -264,6 +282,26 @@ function getQuiz()
   let params = new URLSearchParams(document.location.search.substring(1));
   let name = params.get("quiz");
   return name;
+}
+
+function error(msg)
+{
+    question.remove()
+    submit_button.remove()
+
+    let alert = document.createElement("div")
+    let btn = document.createElement("button")
+    btn.className = "btn eq_pri_bg eq_sec_col text-center mx-auto mt-2"
+    btn.innerHTML = "zurück zum Start"
+    alert.className = "alert-danger text-center mx-auto mr-5 ml-5"
+    alert.style = "width: 100%; max-width: 500px; border-radius: 4px; padding: 20px;"
+    alert.innerHTML = msg
+    document.body.appendChild(alert)
+    document.body.appendChild(btn)
+
+    btn.addEventListener("click", () => {
+        window.location.href = "http://" + host
+    })
 }
 
 requestJSON()

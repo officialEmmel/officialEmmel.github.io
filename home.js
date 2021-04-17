@@ -49,6 +49,7 @@ quizlist.emmels_quiz_all.forEach(element => {
     button.className = "btn btn-primary mt-3"
     button.id = "aq_button"
     button.innerHTML = "Spielen"
+    button.href = "http://" + host + "/quiz_player/?quiz=" + element.index.toString()
     
     div3.appendChild(div4)
     div2.appendChild(div3)
@@ -66,7 +67,6 @@ quizlist.emmels_quiz_all.forEach(element => {
 
     if(index == quizlist.emmels_quiz_all.length)
     {
-        console.log("ofojuo")
         more_button.className = "btn eq_pri_bg eq_sec_col mt-3 mx-auto"
         more_button.type = "button"
         more_button.dataset.toggle = "collapse"
@@ -100,7 +100,7 @@ function newestQuiz()
     button.className = "btn btn-primary mt-3"
     button.id = "aq_button"
     button.innerHTML = "Spielen"
-    button.href = "http://" + host + "/quiz_player/weekly_quiz"
+    button.href = "http://" + host + "/quiz_player/?quiz=" + quizlist.emmels_quiz_newest.index.toString()
     
   
     

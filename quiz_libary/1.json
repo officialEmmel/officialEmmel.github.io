@@ -6,22 +6,33 @@
     [
         {   
             "question": "Welches ist das zweitgrößte Land der Welt?",
-            "choices": ["China", "Russland", "Dänemark"],
-            "solution": 1,
+            "choices": ["China", "Russland", "Dänemark", "Kanada"],
+            "solution": 3,
             "description": "Kanada ist mit einer Landesfläche von rund 10 Millionen Quadratkilometern der flächenmäßig zweitgrößte Staat der Erde."
         },
         {   
             "question": "Was ist die drittgrößte Stadt Deutschlands?",
-            "choices": ["Hamburg", "Köln", "München"],
+            "choices": ["Hamburg", "Köln", "München", "Berlin"],
             "solution": 2,
-            "description": "Kanada ist mit einer Landesfläche von rund 10 Millionen Quadratkilometern der flächenmäßig zweitgrößte Staat der Erde."
+            "description": "Das Stadtbild Münchens wird von jahrhundertealte Bauwerken und zahlreichen Museen geprägt. Die bayerische Landeshauptstadt ist für das alljährliche Oktoberfest und ihre Bierhallen bekannt, darunter vor allem das 1589 eröffnete Hofbräuhaus. In der Altstadt am zentralen Marienplatz stehen Wahrzeichen wie das neugotische Neue Rathaus, dessen beliebtes Glockenspiel Melodien und Geschichten aus dem 16. Jahrhundert spielt."
         },
         {   
-            "question": "",
-            "choices": ["Hamburg", "Köln", "München"],
+            "question": "Welches ist die größte Stadt der welt? (Einwohnerzahl)",
+            "choices": ["New York", "Tokyo", "Mexiko-City"],
             "solution": 2,
-            "description": "Kanada ist mit einer Landesfläche von rund 10 Millionen Quadratkilometern der flächenmäßig zweitgrößte Staat der Erde."
+            "description": "Mit über 38 Millionen Einwohnern besitzt Tokio damit eine höhere Bevölkerung als das gesamte Land Kanada (36,7 Millionen)."
+        },
+        {   
+            "question": "Welcher Planet ist am nächsten zur Sonne?",
+            "choices": ["Mars", "Venus", "Uranus", "Merkur"],
+            "solution": 3,
+            "description": "Der Merkur ist mit einem Durchmesser von knapp 4880 Kilometern der kleinste, mit einer durchschnittlichen Sonnenentfernung von etwa 58 Millionen Kilometern der sonnennächste und somit auch schnellste Planet im Sonnensystem."
+        },
+        {   
+            "question": "Wie lang braucht der Schall um einen Kilometer zurückzulegen?",
+            "choices": ["1 Sekunde", "3 Sekunden", "12 Sekunden"],
+            "solution": 1,
+            "description": "In Luft legt der Schall in drei Sekunden ungefähr einen Kilometer zurück. Die Schallgeschwindigkeit in Luft beträgt etwa 344 m/s (Meter pro Sekunde)."
         }
-
     ]
 }
