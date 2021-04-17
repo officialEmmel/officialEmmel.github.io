@@ -48,8 +48,18 @@ let quiz =  {
 
 function requestJSON()
 {
+    if(getQuiz() == undefined) return;
     var request = new XMLHttpRequest();
-    request.open('GET', "");
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(request.response)
+            if(request.response == null) return;
+            quiz = JSON.parse(request.response);
+            nextQuestion()
+        }
+    };
+    request.open("GET", `https://raw.githubusercontent.com/officialEmmel/officialEmmel.github.io/master/quiz_libary/${getQuiz()}.json`);
+    request.send();
 }
 
 submit_button.addEventListener("click", () => {
@@ -256,4 +266,4 @@ function getQuiz()
   return name;
 }
 
-nextQuestion()
+requestJSON()
