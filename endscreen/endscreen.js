@@ -8,30 +8,32 @@ let right = 0;
 let fals = 0;
 
 
-let quiz =  {
-  title: "Allgemeinwissen",
-  date: "KW 12",
-  index: 26,
-  questions: [
-      {   
-          question: "Wer war der erste Bundeskanzler von Deutschland?",
-          choices: ["Konrad Adenauer", "Willy Brandt", "Helmut Schmidt"],
-          solution: 0,
-          description: "Konrad Hermann Joseph Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
-      },
-      {    
-          question: "Deutschland?",
-          choices: ["Konrad Adenauer", "Willy Brandt", "Helmut Schmidt"],
-          solution: 0,
-          description: "Konrad Hermann Joseph Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
-      },
-      {    
-          question: "LOLOLOLOLOLO?",
-          choices: ["Konrad Adenauer", "Willy Brandt", "Helmut Schmidt"],
-          solution: 2,
-          description: "Konrad Hermann Joseph Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
-      }
-  ]
+let quiz =  {}
+function requestJSON()
+{
+    if(getQuiz() == "")
+    {
+        return;
+    }
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if(request.status == 404)
+        {
+            return;
+        }
+
+        if (this.readyState == 4 && this.status == 200) {
+            if(request.response == null)
+            {
+                return;
+            }
+
+            quiz = JSON.parse(request.response);
+            start()
+        }
+    };
+    request.open("GET", `https://raw.githubusercontent.com/officialEmmel/officialEmmel.github.io/master/quiz_libary/${getQuiz()}.json`);
+    request.send();
 }
 
 console.log(getQuiz())
@@ -133,4 +135,4 @@ function chart(right, fals)
       }
 }
 
-start()
+requestJSON();

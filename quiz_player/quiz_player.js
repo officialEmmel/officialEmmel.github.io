@@ -18,33 +18,7 @@ let host = "localhost:5500"
 let red = "#bd2020"
 let green = "#20bd4a"
 
-let quiz =  {
-    title: "Allgemeinwissen",
-    date: "KW 12",
-    index: 26,
-    questions: [
-        {   
-            question: "Wer war der erste Bundeskanzler von Deutschland?",
-            choices: ["Konrad Adenauer", "Willy Brandt", "Helmut Schmidt", "lololol"],
-            solution: 0,
-            image: "wwwwwwwwwwwwwwwwwwww",
-            description: "Konrad Hermann Joseph Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
-        },
-        {    
-            question: "Welche Flagge ist das?",
-            choices: ["Norwegen", "Schweden", "Island", "Finnland"],
-            solution: 0,
-            image: "../../lol.PNG",
-            description: "Konrad Hermann Joseph Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
-        },
-        {    
-            question: "LOLOLOLOLOLO?",
-            choices: ["Konrad Adenauer", "Willy Brandt", "Helmut Schmidt"],
-            solution: 2,
-            description: "Konrad Hermann Joseph Adenauer war von 1949 bis 1963 der erste Bundeskanzler der Bundesrepublik Deutschland."
-        }
-    ]
-}
+let quiz =  ""
 
 function requestJSON()
 {
@@ -236,7 +210,6 @@ function endScreen()
 
 function solutionPage()
 {
-    quizpage.style.display = "none"
     solutionFadeIn()
     solution_description.innerHTML = quiz.questions[question_index].description
 }
@@ -266,8 +239,9 @@ function getCookie(cname) {
 
 function solutionFadeIn(){
     (function( $ ){
+        $("#quiz").fadeOut(500)
         $("#solution").hide()
-        $("#solution").fadeIn(1000)
+        $("#solution").delay(500).fadeIn(500)
     })( jQuery );
 }
 
@@ -291,10 +265,10 @@ function error(msg)
 
     let alert = document.createElement("div")
     let btn = document.createElement("button")
-    btn.className = "btn eq_pri_bg eq_sec_col text-center mx-auto mt-2"
+    btn.className = "btn eq_pri_bg eq_sec_col mt-2 ml-3"
     btn.innerHTML = "zurück zum Start"
-    alert.className = "alert-danger text-center mx-auto mr-5 ml-5"
-    alert.style = "width: 100%; max-width: 500px; border-radius: 4px; padding: 20px;"
+    alert.className = "alert-danger ml-3"
+    alert.style = "width: 75%; max-width: 500px; border-radius: 4px; padding: 20px;"
     alert.innerHTML = msg
     document.body.appendChild(alert)
     document.body.appendChild(btn)
