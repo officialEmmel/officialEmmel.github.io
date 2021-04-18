@@ -13,7 +13,7 @@ let imagecontainer = document.getElementById("img-container")
 let question_index = 0;
 let cookies = document.cookie;
 solutionpage.style.display = "none";
-let host = "localhost:5500"
+let host = "officialemmel.github.io"
 
 let red = "#bd2020"
 let green = "#20bd4a"
@@ -33,7 +33,7 @@ function requestJSON()
         if(request.status == 404)
         {
             if(b) return;
-            error("Das von dir angeforderte Quiz wurde nicht gefunden.")
+            error("<b>Das von dir angeforderte Quiz wurde nicht gefunden.</b>")
             b = true
             return;
         }
@@ -41,7 +41,7 @@ function requestJSON()
         if (this.readyState == 4 && this.status == 200) {
             if(request.response == null)
             {
-                error("Beim Laden des Quiz ist ein Fehler aufgeten. Bitte versuche es später erneut.")
+                error("<b>Beim Laden des Quiz ist ein Fehler aufgeten.</b> Bitte versuche es später erneut.")
                 return;
             }
 
