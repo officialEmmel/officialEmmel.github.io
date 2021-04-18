@@ -13,7 +13,7 @@ let imagecontainer = document.getElementById("img-container")
 let question_index = 0;
 let cookies = document.cookie;
 solutionpage.style.display = "none";
-let host = "officialemmel.github.io"
+let host = "localhost:5500"
 
 let red = "#bd2020"
 let green = "#20bd4a"
@@ -261,21 +261,30 @@ function getQuiz()
 function error(msg)
 {
     question.remove()
+    quizpage.remove()
     submit_button.remove()
 
     let alert = document.createElement("div")
     let btn = document.createElement("button")
     btn.className = "btn eq_pri_bg eq_sec_col mt-2 ml-3"
     btn.innerHTML = "zurück zum Start"
-    alert.className = "alert-danger ml-3"
+    alert.className = "alert-danger mx-auto mt-3 ml-3"
     alert.style = "width: 75%; max-width: 500px; border-radius: 4px; padding: 20px;"
     alert.innerHTML = msg
-    document.body.appendChild(alert)
-    document.body.appendChild(btn)
+    document.getElementById("alert-container").appendChild(alert)
+    document.getElementById("alert-container").appendChild(btn)
 
     btn.addEventListener("click", () => {
         window.location.href = "http://" + host
     })
 }
+
+document.addEventListener("visibilitychange", event => {
+    if (document.visibilityState == "visible") {
+      
+    } else {
+      error("<b>Bitte wechsele nicht den Tab</b> oder schließe deinen Browser während du ein Quiz spielst.")
+    }
+})
 
 requestJSON()
