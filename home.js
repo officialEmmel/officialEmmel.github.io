@@ -6,7 +6,7 @@ let items = document.querySelectorAll("#aq_title");
 let quizlist = JSON.parse(data)
 console.log(quizlist.emmels_quiz_all)
 
-let host = "officialemmel.github.io"
+let host = "localhost:5500"
 
 
 for (let i = 0; i < quizlist.emmels_quiz_all.length; i++) {
@@ -67,7 +67,7 @@ quizlist.emmels_quiz_all.forEach(element => {
 
     if(index == quizlist.emmels_quiz_all.length)
     {
-        more_button.className = "btn eq_pri_bg eq_sec_col mt-3 mx-auto"
+        more_button.className = "btn eq_pri_bg eq_sec_col mb-3 mt-3 mx-auto"
         more_button.type = "button"
         more_button.dataset.toggle = "collapse"
         more_button.dataset.target = ".multi-collapse"

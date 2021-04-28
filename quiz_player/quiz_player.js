@@ -13,7 +13,7 @@ let imagecontainer = document.getElementById("img-container")
 let question_index = 0;
 let cookies = document.cookie;
 solutionpage.style.display = "none";
-let host = "officialemmel.github.io"
+let host = "localhost:5500"
 
 let red = "#bd2020"
 let green = "#20bd4a"
@@ -268,6 +268,7 @@ function error(msg)
     let btn = document.createElement("button")
     btn.className = "btn eq_pri_bg eq_sec_col mt-2 ml-3"
     btn.innerHTML = "zurück zum Start"
+    btn.id = "alert-button"
     alert.className = "alert-danger mx-auto mt-3 ml-3"
     alert.style = "width: 75%; max-width: 500px; border-radius: 4px; padding: 20px;"
     alert.innerHTML = msg
