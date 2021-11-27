@@ -6,7 +6,7 @@ let items = document.querySelectorAll("#aq_title");
 let quizlist = JSON.parse(data)
 console.log(quizlist.emmels_quiz_all)
 
-let host = "localhost:5500"
+let host = "officialemmel.github.io"
 
 
 for (let i = 0; i < quizlist.emmels_quiz_all.length; i++) {
